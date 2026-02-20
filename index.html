@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            <button id="vsl-button" class="btn-next" onclick="next()">REVELAR EL SECRETO</button>
+            <button id="vsl-button" class="btn-next" onclick="next()" style="display: none;">REVELAR EL SECRETO</button>
         </div>
 
         <!-- Pantalla 2: Modal de Autoridad -->
@@ -320,6 +320,34 @@
         console.log('🇪🇸 Quiz iniciado - Español');
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
+
+        // Controle do vídeo: player visível, áudio liberado, botão após 200s do play
+        window._wq = window._wq || [];
+        _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
+            let playStartTime = null;
+            
+            // Garantir que áudio não esteja mutado
+            video.unmute();
+            video.volume(1); // Volume 100%
+            
+            video.bind("play", function() {
+                if (playStartTime === null) {
+                    playStartTime = Date.now();
+                    video.unmute(); // Garante áudio ao dar play
+                    console.log('▶️ Play iniciado - contando 200s | Áudio liberado');
+                }
+            });
+            
+            video.bind("timechange", function(t) {
+                if (playStartTime !== null && step === 0) {
+                    const elapsedSeconds = (Date.now() - playStartTime) / 1000;
+                    if (elapsedSeconds >= 200) {
+                        document.getElementById('vsl-button').style.display = 'block';
+                        console.log('✅ Botão liberado aos 200s');
+                    }
+                }
+            });
+        }});
     </script>
 </body>
 </html>
