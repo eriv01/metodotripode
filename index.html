@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            <button id="vsl-button" class="btn-next" onclick="next()" style="display: none;">REVELAR EL SECRETO</button>
+            <button id="vsl-button" class="btn-next" onclick="next()">LIBERAR PROTOCOLO</button>
         </div>
 
         <!-- Pantalla 2: Modal de Autoridad -->
@@ -91,8 +91,7 @@
                     <div class="slide-caption">ESTUDIO CLÍNICO: EXPANSIÓN TISULAR ACTIVA</div>
                 </div>
             </div>
-            <p style="color: var(--muted); margin-bottom: 25px;" id="loading-text">Cargando evaluación gratuita...</p>
-            <button class="btn-next" onclick="next()" id="start-quiz-btn" disabled>INICIAR EVALUACIÓN AHORA</button>
+            <button class="btn-next" onclick="next()" id="start-quiz-btn">INICIAR EVALUACIÓN AHORA</button>
         </div>
 
         <!-- Pantalla 3: Quiz (15 Preguntas) -->
@@ -238,17 +237,11 @@
         function startModalDelay() {
             let sIdx = 0;
             const slides = document.querySelectorAll('#authority-carousel .slide');
-            const interval = setInterval(function() {
+            setInterval(function() {
                 slides.forEach(s => s.classList.remove('active'));
                 sIdx = (sIdx + 1) % slides.length;
                 slides[sIdx].classList.add('active');
             }, 2000);
-
-            setTimeout(function() {
-                clearInterval(interval);
-                document.getElementById('loading-text').textContent = '¡Evaluación cargada!';
-                document.getElementById('start-quiz-btn').disabled = false;
-            }, 5000);
         }
 
         function startProcessing() {
@@ -320,34 +313,6 @@
         console.log('🇪🇸 Quiz iniciado - Español');
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
-
-        // Controle do vídeo: player visível, áudio liberado, botão após 200s do play
-        window._wq = window._wq || [];
-        _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
-            let playStartTime = null;
-            
-            // Garantir que áudio não esteja mutado
-            video.unmute();
-            video.volume(1); // Volume 100%
-            
-            video.bind("play", function() {
-                if (playStartTime === null) {
-                    playStartTime = Date.now();
-                    video.unmute(); // Garante áudio ao dar play
-                    console.log('▶️ Play iniciado - contando 200s | Áudio liberado');
-                }
-            });
-            
-            video.bind("timechange", function(t) {
-                if (playStartTime !== null && step === 0) {
-                    const elapsedSeconds = (Date.now() - playStartTime) / 1000;
-                    if (elapsedSeconds >= 200) {
-                        document.getElementById('vsl-button').style.display = 'block';
-                        console.log('✅ Botão liberado aos 200s');
-                    }
-                }
-            });
-        }});
     </script>
 </body>
 </html>
