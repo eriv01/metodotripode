@@ -152,7 +152,7 @@
             <div class="guarantee-box">
                 <img src="https://metodotripe.shop/wp-content/uploads/2026/02/7564b4c41b95c4d46ca0_-_94d8bd698ca2c759ce37_-_inserir-um-titulo.jpg" class="guarantee-badge">
                 <div class="guarantee-text">
-                    <p style="font-weight: 900; color: #fff;">MÉTODO TRÍPODE</p>
+                    <p style="font-weight: 900; color: #fff;">MÉTODO TRIPE</p>
                     <p style="font-weight: 900; color: #22c55e;">30 DÍAS DE GARANTÍA</p>
                     <p style="color: var(--muted);">+ BONOS EXCLUSIVOS INCLUIDOS</p>
                 </div>
@@ -313,6 +313,15 @@
         console.log('🇪🇸 Quiz iniciado - Español');
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
+
+        // Autoplay e áudio automático no vídeo
+        window._wq = window._wq || [];
+        _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
+            video.unmute(); // Desmutar áudio
+            video.volume(1); // Volume 100%
+            video.play(); // Autoplay
+            console.log('🎬 Autoplay iniciado com áudio');
+        }});
     </script>
 </body>
 </html>
