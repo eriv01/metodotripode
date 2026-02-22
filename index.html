@@ -46,6 +46,9 @@
         .guarantee-box { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin: 20px 0; border: 1px dashed #444; }
         .guarantee-badge { width: 50px; margin-right: 15px; }
         .guarantee-text { text-align: left; font-size: 12px; line-height: 1.3; }
+        .sound-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; background: rgba(239, 68, 68, 0.95); color: white; border: none; padding: 20px 40px; border-radius: 50px; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5); animation: pulse-sound 2s infinite; display: none; }
+        .sound-button.show { display: block; }
+        @keyframes pulse-sound { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.05); } }
     </style>
 </head>
 <body>
@@ -57,6 +60,7 @@
             <p class="sub-headline">Mira el video a continuación para liberar tu 👇evaluación gratuita👇</p>
             <div class="video-placeholder"></div>
             <div class="video-container" id="video-container">
+              <button id="sound-btn" class="sound-button">🔊 ACTIVAR SONIDO</button>
               <script src="https://fast.wistia.com/embed/medias/xkpxqfn66k.jsonp" async></script>
               <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
               <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
@@ -314,13 +318,32 @@
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
 
-        // Autoplay e áudio automático no vídeo
+        // Autoplay mutado + botão para ativar som
         window._wq = window._wq || [];
         _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
-            video.unmute(); // Desmutar áudio
-            video.volume(1); // Volume 100%
-            video.play(); // Autoplay
-            console.log('🎬 Autoplay iniciado com áudio');
+            let soundActivated = false;
+            
+            // Inicia mutado para permitir autoplay
+            video.mute();
+            video.play();
+            
+            // Mostra botão de som após 2 segundos
+            setTimeout(function() {
+                document.getElementById('sound-btn').classList.add('show');
+            }, 2000);
+            
+            // Quando clicar no botão
+            document.getElementById('sound-btn').onclick = function() {
+                if (!soundActivated) {
+                    video.unmute();
+                    video.volume(1);
+                    soundActivated = true;
+                    this.style.display = 'none';
+                    console.log('🔊 Som ativado!');
+                }
+            };
+            
+            console.log('🎬 Autoplay iniciado (mutado) - Clique no botão para ativar som');
         }});
     </script>
 </body>
