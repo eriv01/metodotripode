@@ -13,19 +13,17 @@
         .fixed-header { font-size: 10px; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
         .headline { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 15px; line-height: 1.2; text-transform: uppercase; }
         .sub-headline { font-size: 14px; color: var(--primary); font-weight: 700; margin-bottom: 20px; }
-        .video-container { position: relative; background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border); width: 100%; }
-        .video-container.sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; margin: 0; border-radius: 0; max-width: 100%; }
-        .video-placeholder { display: none; }
-        .video-placeholder.show { display: block; padding-bottom: 56.25%; }
-        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); z-index: 999; }
+        .copy-block { text-align: left; margin: 20px 0; line-height: 1.6; font-size: 15px; color: #d1d5db; }
+        .copy-block p { margin-bottom: 15px; }
+        .copy-block strong { color: #fff; font-weight: 900; }
+        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); margin-top: 20px; }
         .btn-next:hover { transform: scale(1.02); }
-        .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
         .screen { display: none; }
         .screen.active { display: block; }
         .progress-bar { height: 4px; background: var(--border); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
-        .options-grid { display: grid; gap: 12px; margin-bottom: 25px; }
-        .option-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 16px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .options-grid { display: grid; gap: 14px; margin-bottom: 25px; }
+        .option-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 18px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; font-size: 16px; }
         .option-btn:hover { border-color: var(--primary); background: rgba(239, 68, 68, 0.1); }
         .urgency-badge { background: rgba(34, 197, 94, 0.2); border: 2px solid #22c55e; padding: 10px 15px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: 900; color: #22c55e; font-size: 12px; }
         .carousel { width: 100%; height: 250px; background: #000; border-radius: 15px; margin: 15px 0; overflow: hidden; position: relative; border: 1px solid var(--border); }
@@ -46,103 +44,98 @@
         .guarantee-box { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin: 20px 0; border: 1px dashed #444; }
         .guarantee-badge { width: 50px; margin-right: 15px; }
         .guarantee-text { text-align: left; font-size: 12px; line-height: 1.3; }
-        .sound-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; background: rgba(239, 68, 68, 0.95); color: white; border: none; padding: 20px 40px; border-radius: 50px; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5); animation: pulse-sound 2s infinite; display: none; }
-        .sound-button.show { display: block; }
-        @keyframes pulse-sound { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.05); } }
+        .question-text { font-size: 24px; font-weight: 900; margin-bottom: 20px; line-height: 1.3; }
+        .result-highlight { background: rgba(34, 197, 94, 0.1); border: 2px solid #22c55e; padding: 20px; border-radius: 16px; margin: 20px 0; }
+        .result-highlight h3 { color: #22c55e; font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+        .result-highlight p { color: #fff; font-size: 16px; line-height: 1.5; margin-bottom: 15px; }
     </style>
 </head>
 <body>
     <div class="quiz-card">
-        <!-- Pantalla 1: VSL -->
+        <!-- Tela 1: Copy sobre o método (SEM VSL) -->
         <div id="s-0" class="screen active">
             <div class="fixed-header">PROTOCOLO TRIPE - REVELADO</div>
-            <h1 class="headline">EL SECRETO DE LOS ACTORES PORNO PARA ACTIVAR EL CRECIMIENTO DEL PENE EN 45 DÍAS.</h1>
-            <p class="sub-headline">Mira el video a continuación para liberar tu 👇evaluación gratuita👇</p>
-            <div class="video-placeholder"></div>
-            <div class="video-container" id="video-container">
-              <button id="sound-btn" class="sound-button">🔊 ACTIVAR SONIDO</button>
-              <script src="https://fast.wistia.com/embed/medias/xkpxqfn66k.jsonp" async></script>
-              <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-              <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                  <div class="wistia_embed wistia_async_xkpxqfn66k videoFoam=true" style="height:100%;position:relative;width:100%">
-                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                      <img src="https://fast.wistia.com/embed/medias/xkpxqfn66k/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <h1 class="headline">EL MÉTODO REVOLUCIONARIO QUE ESTÁ CAMBIANDO LA VIDA DE MILES DE HOMBRES</h1>
+            <p class="sub-headline">Descubre cómo aumentar tu tamaño de forma 100% natural</p>
+            
+            <div class="copy-block">
+                <p><strong>¿Qué es el Protocolo TRIPE?</strong></p>
+                <p>Es un método científico basado en expansión tisular progresiva que permite aumentar el tamaño y grosor del pene de forma natural, sin cirugías, aparatos dolorosos o medicamentos con efectos secundarios.</p>
+                
+                <p><strong>Desarrollado por profesionales de la salud</strong>, el Protocolo TRIPE utiliza técnicas específicas que estimulan el crecimiento celular natural de los tejidos cavernosos, permitiendo ganancias reales y permanentes.</p>
+                
+                <p><strong>Los resultados hablan por sí mismos:</strong> Hombres comunes como tú han logrado aumentar entre 3 y 7 centímetros en solo 45-90 días de aplicación consistente.</p>
+                
+                <p>Haz la evaluación gratuita ahora y descubre tu potencial real de crecimiento.</p>
             </div>
-            <button id="vsl-button" class="btn-next" onclick="next()">LIBERAR PROTOCOLO</button>
+            
+            <button class="btn-next" onclick="next()">HACER MI EVALUACIÓN GRATUITA</button>
         </div>
 
-        <!-- Pantalla 2: Modal de Autoridad -->
+        <!-- Tela 2: Ejemplos (fotos + copy) -->
         <div id="s-1" class="screen">
-            <div class="fixed-header">CONSULTA PROFESIONAL GRATUITA</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">HAZ CLIC AHORA PARA REALIZAR TU EVALUACIÓN GRATUITA</h2>
-            <div class="urgency-badge"><span id="online-count-val">147</span> HOMBRES EN LÍNEA AHORA</div>
+            <div class="fixed-header">CASOS DE ÉXITO COMPROBADOS</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">MIRA EJEMPLOS DE HOMBRES COMUNES QUE APLICARON EL MÉTODO</h2>
+            <div class="urgency-badge"><span id="online-count-val">147</span> HOMBRES REALIZANDO EVALUACIÓN AHORA</div>
             <div class="carousel" id="authority-carousel">
                 <div class="slide active">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/02-.jpg" alt="Paciente M. Souza">
-                    <div class="slide-caption">PACIENTE M. SOUZA: +5.8cm (VALIDADO ✓)</div>
+                    <div class="slide-caption">PACIENTE M. SOUZA: +5.8cm EN 60 DÍAS</div>
                 </div>
                 <div class="slide">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/01/22109742.jpg" alt="Paciente R. Oliveira">
-                    <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm (VALIDADO ✓)</div>
+                    <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm EN 45 DÍAS</div>
                 </div>
                 <div class="slide">
-                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudio Clínico">
-                    <div class="slide-caption">ESTUDIO CLÍNICO: EXPANSIÓN TISULAR ACTIVA</div>
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudio">
+                    <div class="slide-caption">ESTUDIO CLÍNICO: 87% DE ÉXITO</div>
                 </div>
             </div>
-            <button class="btn-next" onclick="next()" id="start-quiz-btn">INICIAR EVALUACIÓN AHORA</button>
+            <p style="color: var(--muted); font-size: 14px; margin: 15px 0;">Estos son solo algunos de los miles de hombres que ya transformaron sus vidas.</p>
+            <button class="btn-next" onclick="next()">INICIAR MI EVALUACIÓN AHORA</button>
         </div>
 
-        <!-- Pantalla 3: Quiz (15 Preguntas) -->
+        <!-- Tela 3: Quiz (15 Perguntas) -->
         <div id="s-2" class="screen">
             <div class="fixed-header">EVALUACIÓN CLÍNICA - ETAPA <span id="q-num">1</span>/15</div>
             <div class="progress-bar"><div class="progress-fill" id="p-fill"></div></div>
             <div id="q-box"></div>
         </div>
 
-        <!-- Pantalla 4: Procesamiento -->
+        <!-- Tela 4: Resultado + CTA -->
         <div id="s-3" class="screen">
-            <div class="fixed-header">SISTEMA DE DIAGNÓSTICO AVANZADO</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">ANALIZANDO DATOS BIOMÉTRICOS...</h2>
+            <div class="fixed-header">ANÁLISIS COMPLETADO</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">¡TU EVALUACIÓN ESTÁ LISTA!</h2>
+            
             <div class="carousel" id="depo-carousel">
                 <div class="slide active">
-                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp" alt="Paciente H. Lima">
-                    <div class="slide-caption">PACIENTE H. LIMA: +5.2cm (CONFIRMADO ✓)</div>
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp" alt="Resultado">
+                    <div class="slide-caption">PACIENTE H. LIMA: +5.2cm CONFIRMADO</div>
                 </div>
                 <div class="slide">
-                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/daf6ef_d639bfc5b0a34189b18c48e3f54f2763_mv2-1.png" alt="Paciente A. Costa">
-                    <div class="slide-caption">PACIENTE A. COSTA: +6.1cm (CONFIRMADO ✓)</div>
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/daf6ef_d639bfc5b0a34189b18c48e3f54f2763_mv2-1.png" alt="Resultado">
+                    <div class="slide-caption">PACIENTE A. COSTA: +6.1cm CONFIRMADO</div>
                 </div>
                 <div class="slide">
-                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/WhatsApp-Image-2024-12-18-at-15.11.46-rcl53qv1p0gr5s3fzr30gvvchnyybvpbhth13gqhj4.jpeg">
-                    <div class="slide-caption">PACIENTE J. GOMES: +4.7cm (CONFIRMADO ✓)</div>
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/WhatsApp-Image-2024-12-18-at-15.11.46-rcl53qv1p0gr5s3fzr30gvvchnyybvpbhth13gqhj4.jpeg" alt="Resultado">
+                    <div class="slide-caption">PACIENTE J. GOMES: +4.7cm CONFIRMADO</div>
                 </div>
             </div>
-            <div id="analysis-box" style="margin-top: 25px;">
-                <div class="analysis-item">
-                    <div class="analysis-label"><span>FLUJO SANGUÍNEO CAVERNOSO</span> <span id="st-1" class="status-tag">PROCESANDO</span></div>
-                    <div class="progress-container"><div id="pb-1" class="progress-bar-fill"></div></div>
-                </div>
-                <div class="analysis-item">
-                    <div class="analysis-label"><span>DENSIDAD TISULAR</span> <span id="st-2" class="status-tag">ESPERANDO</span></div>
-                    <div class="progress-container"><div id="pb-2" class="progress-bar-fill"></div></div>
-                </div>
-                <div class="analysis-item">
-                    <div class="analysis-label"><span>COMPATIBILIDAD PROTOCOLO</span> <span id="st-3" class="status-tag">ESPERANDO</span></div>
-                    <div class="progress-container"><div id="pb-3" class="progress-bar-fill"></div></div>
-                </div>
+
+            <div class="result-highlight">
+                <h3>🎯 TU POTENCIAL DE CRECIMIENTO</h3>
+                <p>Basado en tu perfil biométrico, <strong>puedes ganar entre 3 y 7 centímetros</strong> de longitud y hasta 3cm de grosor aplicando correctamente el Protocolo TRIPE.</p>
+                <p><strong>Tiempo estimado para primeros resultados visibles: 45 días</strong></p>
             </div>
+
+            <button class="btn-next" onclick="finish()">ACCEDER AL PROTOCOLO COMPLETO AHORA</button>
+            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Acceso inmediato • Garantía de 30 días</p>
         </div>
 
-        <!-- Pantalla 5: Oferta Final -->
+        <!-- Tela 5: Oferta (caso usuário volte) -->
         <div id="s-4" class="screen">
-            <div class="fixed-header">ACCESO LIBERADO AL PROTOCOLO</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 10px;">¡TU PLAN PERSONALIZADO ESTÁ LISTO!</h2>
+            <div class="fixed-header">ACCESO LIBERADO</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 10px;">¡TU PLAN ESTÁ LISTO!</h2>
             
             <div class="benefit-list">
                 <div class="benefit-item"><span>✓</span> AUMENTA EL TAMAÑO Y GROSOR NATURALMENTE</div>
@@ -158,33 +151,33 @@
                 <div class="guarantee-text">
                     <p style="font-weight: 900; color: #fff;">MÉTODO TRIPE</p>
                     <p style="font-weight: 900; color: #22c55e;">30 DÍAS DE GARANTÍA</p>
-                    <p style="color: var(--muted);">+ BONOS EXCLUSIVOS INCLUIDOS</p>
+                    <p style="color: var(--muted);">+ BONOS EXCLUSIVOS</p>
                 </div>
             </div>
 
-            <button class="btn-next" onclick="finish()" style="margin-top: 10px;">GARANTIZAR MI ACCESO AHORA</button>
-            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Compra 100% Segura y Confidencial</p>
+            <button class="btn-next" onclick="finish()">GARANTIZAR MI ACCESO AHORA</button>
+            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Compra 100% Segura</p>
         </div>
     </div>
 
     <script>
         // ==========================================
-        // CONFIGURACIÓN - CAMBIA SOLO ESTA LÍNEA
+        // CONFIGURACIÓN
         // ==========================================
         const CHECKOUT_URL = 'https://pay.hotmart.com/I101039445P?checkoutMode=10';
         // ==========================================
 
         const QUESTIONS = [
-            { id: 'edad', t: '¿Cuál es tu rango de edad? (Factor de riesgo vascular)', o: ['18-25', '26-35', '36-45', '46-55', '55+'] },
-            { id: 'rigidez', t: '¿Con qué frecuencia alcanzas la rigidez máxima del pene?', o: ['Casi nunca', 'Raramente', 'A veces', 'Frecuentemente', 'Siempre'] },
+            { id: 'edad', t: '¿Cuál es tu rango de edad?', o: ['18-25', '26-35', '36-45', '46-55', '55+'] },
+            { id: 'rigidez', t: '¿Con qué frecuencia alcanzas la rigidez máxima?', o: ['Casi nunca', 'Raramente', 'A veces', 'Frecuentemente', 'Siempre'] },
             { id: 'mantenimiento', t: '¿Puedes mantener la erección hasta eyacular?', o: ['Tengo mucha dificultad', 'A veces falla', 'Sí, sin problemas'] },
             { id: 'matinal', t: '¿Te despiertas con erección matutina?', o: ['Nunca', 'Raramente', 'Casi todos los días'] },
-            { id: 'circulacion', t: '¿Sientes las extremidades (manos/pies) frías con frecuencia?', o: ['Sí, constantemente', 'A veces', 'No'] },
+            { id: 'circulacion', t: '¿Sientes las extremidades frías con frecuencia?', o: ['Sí, constantemente', 'A veces', 'No'] },
             { id: 'historial', t: '¿Tienes historial de Diabetes o Presión Alta?', o: ['Sí, ambas', 'Sí, una de ellas', 'No'] },
-            { id: 'tamano', t: '¿Has notado alguna reducción en el tamaño del pene a lo largo de los años?', o: ['Sí, visible', 'Tal vez un poco', 'No'] },
+            { id: 'tamano', t: '¿Has notado reducción en el tamaño del pene?', o: ['Sí, visible', 'Tal vez un poco', 'No'] },
             { id: 'estres', t: '¿Cuál es tu nivel de estrés diario?', o: ['Muy alto', 'Alto', 'Moderado', 'Bajo'] },
             { id: 'sueno', t: '¿Cuántas horas de sueño de calidad tienes?', o: ['Menos de 5h', '5-6h', '7-8h', 'Más de 8h'] },
-            { id: 'libido', t: '¿Cómo evalúas tu deseo sexual (libido)?', o: ['Muy bajo', 'Bajo', 'Normal', 'Alto'] },
+            { id: 'libido', t: '¿Cómo evalúas tu deseo sexual?', o: ['Muy bajo', 'Bajo', 'Normal', 'Alto'] },
             { id: 'vicios', t: '¿Fumas o consumes alcohol en exceso?', o: ['Sí, ambos', 'Sí, uno de ellos', 'No'] },
             { id: 'medicamentos', t: '¿Tomas algún medicamento de forma continua?', o: ['Sí', 'No'] },
             { id: 'ejercicio', t: '¿Cuál es tu frecuencia de ejercicio físico?', o: ['Nunca', '1-2 veces/semana', '3-4 veces/semana', 'Diariamente'] },
@@ -196,28 +189,24 @@
         let qIdx = 0;
 
         function next() {
-            if (step === 0) {
-                step = 1;
-                startModalDelay();
-            } else if (step === 1) {
-                step = 2;
-            } else if (step === 2) {
-                if (qIdx < 14) {
-                    qIdx++;
-                } else {
-                    step = 3;
-                    startProcessing();
-                }
-            }
+            step++;
+            if (step === 1) startCarousel();
             render();
         }
 
         function sel(id, val) {
-            next();
+            if (qIdx < 14) {
+                qIdx++;
+                render();
+            } else {
+                step = 3;
+                startResultCarousel();
+                render();
+            }
         }
 
         function finish() {
-            console.log('🔗 Redirigiendo a:', CHECKOUT_URL);
+            console.log('🔗 Redirecionando:', CHECKOUT_URL);
             window.location.href = CHECKOUT_URL;
         }
 
@@ -230,7 +219,7 @@
                 document.getElementById('q-num').textContent = qIdx + 1;
                 document.getElementById('p-fill').style.width = ((qIdx + 1) / 15 * 100) + '%';
                 document.getElementById('q-box').innerHTML = `
-                    <div style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">${q.t}</div>
+                    <div class="question-text">${q.t}</div>
                     <div class="options-grid">
                         ${q.o.map((o, i) => `<button class="option-btn" onclick="sel('${q.id}', ${i})">${o}</button>`).join('')}
                     </div>
@@ -238,113 +227,37 @@
             }
         }
 
-        function startModalDelay() {
-            let sIdx = 0;
+        function startCarousel() {
+            let idx = 0;
             const slides = document.querySelectorAll('#authority-carousel .slide');
-            setInterval(function() {
+            setInterval(() => {
                 slides.forEach(s => s.classList.remove('active'));
-                sIdx = (sIdx + 1) % slides.length;
-                slides[sIdx].classList.add('active');
-            }, 2000);
-        }
-
-        function startProcessing() {
-            let sIdx = 0;
-            const slides = document.querySelectorAll('#depo-carousel .slide');
-            const interval = setInterval(function() {
-                slides.forEach(s => s.classList.remove('active'));
-                sIdx = (sIdx + 1) % slides.length;
-                slides[sIdx].classList.add('active');
-            }, 2000);
-
-            setTimeout(function() {
-                document.getElementById('pb-1').style.width = '100%';
-                document.getElementById('pb-1').classList.add('complete');
-                document.getElementById('st-1').textContent = 'VALIDADO ✓';
-                document.getElementById('st-1').classList.add('complete');
-                document.getElementById('st-2').textContent = 'PROCESANDO';
+                idx = (idx + 1) % slides.length;
+                slides[idx].classList.add('active');
             }, 2500);
-
-            setTimeout(function() {
-                document.getElementById('pb-2').style.width = '100%';
-                document.getElementById('pb-2').classList.add('complete');
-                document.getElementById('st-2').textContent = 'VALIDADO ✓';
-                document.getElementById('st-2').classList.add('complete');
-                document.getElementById('st-3').textContent = 'PROCESANDO';
-            }, 5000);
-
-            setTimeout(function() {
-                document.getElementById('pb-3').style.width = '100%';
-                document.getElementById('pb-3').classList.add('complete');
-                document.getElementById('st-3').textContent = 'COMPATIBLE ✓';
-                document.getElementById('st-3').classList.add('complete');
-            }, 7500);
-
-            setTimeout(function() {
-                clearInterval(interval);
-                step = 4;
-                render();
-            }, 9000);
         }
 
-        setInterval(function() {
+        function startResultCarousel() {
+            let idx = 0;
+            const slides = document.querySelectorAll('#depo-carousel .slide');
+            setInterval(() => {
+                slides.forEach(s => s.classList.remove('active'));
+                idx = (idx + 1) % slides.length;
+                slides[idx].classList.add('active');
+            }, 2500);
+        }
+
+        setInterval(() => {
             const el = document.getElementById('online-count-val');
             if (el) {
-                const current = parseInt(el.textContent);
-                const change = Math.floor(Math.random() * 6) - 2;
-                el.textContent = Math.max(135, Math.min(172, current + change));
+                const val = parseInt(el.textContent);
+                el.textContent = Math.max(135, Math.min(172, val + Math.floor(Math.random() * 6) - 2));
             }
         }, 3500);
 
-        let videoFixed = false;
-        window.addEventListener('scroll', function() {
-            if (step !== 0) return;
-            const videoContainer = document.getElementById('video-container');
-            const placeholder = document.querySelector('.video-placeholder');
-            const rect = videoContainer.getBoundingClientRect();
-
-            if (rect.top <= 0 && !videoFixed) {
-                videoFixed = true;
-                videoContainer.classList.add('sticky');
-                placeholder.classList.add('show');
-            } else if (window.scrollY === 0 && videoFixed) {
-                videoFixed = false;
-                videoContainer.classList.remove('sticky');
-                placeholder.classList.remove('show');
-            }
-        });
-
-        console.log('🇪🇸 Quiz iniciado - Español');
+        console.log('🇪🇸 Quiz iniciado - Nueva versión');
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
-
-        // Autoplay mutado + botão para ativar som
-        window._wq = window._wq || [];
-        _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
-            let soundActivated = false;
-            
-            // Inicia mutado para permitir autoplay
-            video.mute();
-            video.play();
-            
-            // Mostra botão de som após 2 segundos
-            setTimeout(function() {
-                document.getElementById('sound-btn').classList.add('show');
-            }, 2000);
-            
-            // Quando clicar no botão
-            document.getElementById('sound-btn').onclick = function() {
-                if (!soundActivated) {
-                    video.unmute();
-                    video.volume(1);
-                    soundActivated = true;
-                    this.style.display = 'none';
-                    console.log('🔊 Som ativado!');
-                }
-            };
-            
-            console.log('🎬 Autoplay iniciado (mutado) - Clique no botão para ativar som');
-        }});
     </script>
 </body>
 </html>
