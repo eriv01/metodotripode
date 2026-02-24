@@ -45,28 +45,31 @@
         .guarantee-badge { width: 50px; margin-right: 15px; }
         .guarantee-text { text-align: left; font-size: 12px; line-height: 1.3; }
         .question-text { font-size: 24px; font-weight: 900; margin-bottom: 20px; line-height: 1.3; }
-        .result-highlight { background: rgba(34, 197, 94, 0.1); border: 2px solid #22c55e; padding: 20px; border-radius: 16px; margin: 20px 0; }
-        .result-highlight h3 { color: #22c55e; font-size: 20px; font-weight: 900; margin-bottom: 10px; }
-        .result-highlight p { color: #fff; font-size: 16px; line-height: 1.5; margin-bottom: 15px; }
+        .result-highlight { background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05)); border: 3px solid #22c55e; padding: 25px; border-radius: 20px; margin: 25px 0; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2); }
+        .result-number { font-size: 56px; font-weight: 900; color: #22c55e; line-height: 1; margin: 15px 0; text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+        .result-label { font-size: 14px; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .logo-tripode { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-transform: uppercase; letter-spacing: 2px; margin: 20px 0; display: inline-block; text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3); }
     </style>
 </head>
 <body>
     <div class="quiz-card">
-        <!-- Tela 1: Copy sobre o método (SEM VSL) -->
+        <!-- Tela 1: Copy visceral (SEM VSL) -->
         <div id="s-0" class="screen active">
-            <div class="fixed-header">PROTOCOLO TRIPE - REVELADO</div>
-            <h1 class="headline">EL MÉTODO REVOLUCIONARIO QUE ESTÁ CAMBIANDO LA VIDA DE MILES DE HOMBRES</h1>
-            <p class="sub-headline">Descubre cómo aumentar tu tamaño de forma 100% natural</p>
+            <div class="fixed-header">MÉTODO CIENTÍFICO COMPROBADO</div>
+            <div class="logo-tripode">MÉTODO TRIPODE</div>
+            <h1 class="headline">CRECE HASTA 7CM EN 45 DÍAS SIN CIRUGÍAS NI APARATOS</h1>
+            <p class="sub-headline">Miles de hombres ya aumentaron su tamaño de forma natural y permanente</p>
             
             <div class="copy-block">
-                <p><strong>¿Qué es el Protocolo TRIPE?</strong></p>
-                <p>Es un método científico basado en expansión tisular progresiva que permite aumentar el tamaño y grosor del pene de forma natural, sin cirugías, aparatos dolorosos o medicamentos con efectos secundarios.</p>
+                <p><strong>¿Cansado de sentirte inseguro en la cama?</strong> El Método Tripode es la solución científica que activa el crecimiento natural del pene mediante expansión tisular progresiva.</p>
                 
-                <p><strong>Desarrollado por profesionales de la salud</strong>, el Protocolo TRIPE utiliza técnicas específicas que estimulan el crecimiento celular natural de los tejidos cavernosos, permitiendo ganancias reales y permanentes.</p>
+                <p><strong>Sin bombas dolorosas. Sin pastillas peligrosas. Sin cirugías caras.</strong></p>
                 
-                <p><strong>Los resultados hablan por sí mismos:</strong> Hombres comunes como tú han logrado aumentar entre 3 y 7 centímetros en solo 45-90 días de aplicación consistente.</p>
+                <p>Solo un protocolo simple de 15 minutos diarios que <strong>estimula el crecimiento celular natural</strong> de tus tejidos cavernosos.</p>
                 
-                <p>Haz la evaluación gratuita ahora y descubre tu potencial real de crecimiento.</p>
+                <p style="color: #22c55e; font-weight: 900;">Hombres comunes ganaron entre 3 y 7cm en menos de 90 días.</p>
+                
+                <p>Haz tu evaluación GRATUITA ahora y descubre tu potencial real.</p>
             </div>
             
             <button class="btn-next" onclick="next()">HACER MI EVALUACIÓN GRATUITA</button>
@@ -102,10 +105,10 @@
             <div id="q-box"></div>
         </div>
 
-        <!-- Tela 4: Resultado + CTA -->
+        <!-- Tela 4: Processamento com 5 barras -->
         <div id="s-3" class="screen">
-            <div class="fixed-header">ANÁLISIS COMPLETADO</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">¡TU EVALUACIÓN ESTÁ LISTA!</h2>
+            <div class="fixed-header">SISTEMA DE ANÁLISIS AVANZADO</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">ANALIZANDO TU PERFIL BIOMÉTRICO...</h2>
             
             <div class="carousel" id="depo-carousel">
                 <div class="slide active">
@@ -122,18 +125,59 @@
                 </div>
             </div>
 
-            <div class="result-highlight">
-                <h3>🎯 TU POTENCIAL DE CRECIMIENTO</h3>
-                <p>Basado en tu perfil biométrico, <strong>puedes ganar entre 3 y 7 centímetros</strong> de longitud y hasta 3cm de grosor aplicando correctamente el Protocolo TRIPE.</p>
-                <p><strong>Tiempo estimado para primeros resultados visibles: 45 días</strong></p>
+            <div id="analysis-box" style="margin-top: 25px;">
+                <div class="analysis-item">
+                    <div class="analysis-label"><span>CAPACIDAD DE EXPANSIÓN TISULAR</span> <span id="st-1" class="status-tag">PROCESANDO</span></div>
+                    <div class="progress-container"><div id="pb-1" class="progress-bar-fill"></div></div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-label"><span>POTENCIAL DE CRECIMIENTO NATURAL</span> <span id="st-2" class="status-tag">ESPERANDO</span></div>
+                    <div class="progress-container"><div id="pb-2" class="progress-bar-fill"></div></div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-label"><span>ÍNDICE DE VASCULARIZACIÓN</span> <span id="st-3" class="status-tag">ESPERANDO</span></div>
+                    <div class="progress-container"><div id="pb-3" class="progress-bar-fill"></div></div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-label"><span>RESPUESTA HORMONAL</span> <span id="st-4" class="status-tag">ESPERANDO</span></div>
+                    <div class="progress-container"><div id="pb-4" class="progress-bar-fill"></div></div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-label"><span>COMPATIBILIDAD CON PROTOCOLO</span> <span id="st-5" class="status-tag">ESPERANDO</span></div>
+                    <div class="progress-container"><div id="pb-5" class="progress-bar-fill"></div></div>
+                </div>
             </div>
-
-            <button class="btn-next" onclick="finish()">ACCEDER AL PROTOCOLO COMPLETO AHORA</button>
-            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Acceso inmediato • Garantía de 30 días</p>
         </div>
 
-        <!-- Tela 5: Oferta (caso usuário volte) -->
+        <!-- Tela 5: Resultado em destaque -->
         <div id="s-4" class="screen">
+            <div class="fixed-header">¡ANÁLISIS COMPLETADO!</div>
+            <div class="logo-tripode" style="font-size: 24px;">MÉTODO TRIPODE</div>
+            <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #d1d5db;">Tu Potencial de Crecimiento:</h2>
+            
+            <div class="result-highlight">
+                <div class="result-label">PUEDES GANAR HASTA</div>
+                <div class="result-number">3 - 7 CM</div>
+                <div class="result-label">DE LONGITUD + GROSOR</div>
+                <p style="color: #fff; font-size: 15px; margin-top: 20px; font-weight: 600;">Basado en tu perfil biométrico y características fisiológicas analizadas.</p>
+                <p style="color: #22c55e; font-size: 16px; margin-top: 15px; font-weight: 900;">⏱️ Primeros resultados visibles en 45 días</p>
+            </div>
+
+            <div class="benefit-list">
+                <div class="benefit-item"><span>✓</span> AUMENTA EL TAMAÑO Y GROSOR NATURALMENTE</div>
+                <div class="benefit-item"><span>✓</span> ERECCIONES MÁS DURADERAS</div>
+                <div class="benefit-item"><span>✓</span> PRIMEROS RESULTADOS EN 45 DÍAS</div>
+                <div class="benefit-item"><span>✓</span> SIN APARATOS NI MEDICAMENTOS</div>
+                <div class="benefit-item"><span>✓</span> HAZ QUE ELLA LLEGUE 3 VECES POR NOCHE</div>
+                <div class="benefit-item"><span>✓</span> DURA HASTA 3 HORAS EN LA CAMA</div>
+            </div>
+
+            <button class="btn-next" onclick="finish()">ACCEDER AL MÉTODO COMPLETO AHORA</button>
+            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Acceso inmediato • 30 días de garantía</p>
+        </div>
+
+        <!-- Tela 6: Oferta backup -->
+        <div id="s-5" class="screen">
             <div class="fixed-header">ACCESO LIBERADO</div>
             <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 10px;">¡TU PLAN ESTÁ LISTO!</h2>
             
@@ -240,11 +284,57 @@
         function startResultCarousel() {
             let idx = 0;
             const slides = document.querySelectorAll('#depo-carousel .slide');
-            setInterval(() => {
+            const interval = setInterval(() => {
                 slides.forEach(s => s.classList.remove('active'));
                 idx = (idx + 1) % slides.length;
                 slides[idx].classList.add('active');
             }, 2500);
+
+            // Animar as 5 barras de progresso
+            setTimeout(() => {
+                document.getElementById('pb-1').style.width = '100%';
+                document.getElementById('pb-1').classList.add('complete');
+                document.getElementById('st-1').textContent = 'VALIDADO ✓';
+                document.getElementById('st-1').classList.add('complete');
+                document.getElementById('st-2').textContent = 'PROCESANDO';
+            }, 2000);
+
+            setTimeout(() => {
+                document.getElementById('pb-2').style.width = '100%';
+                document.getElementById('pb-2').classList.add('complete');
+                document.getElementById('st-2').textContent = 'VALIDADO ✓';
+                document.getElementById('st-2').classList.add('complete');
+                document.getElementById('st-3').textContent = 'PROCESANDO';
+            }, 4000);
+
+            setTimeout(() => {
+                document.getElementById('pb-3').style.width = '100%';
+                document.getElementById('pb-3').classList.add('complete');
+                document.getElementById('st-3').textContent = 'VALIDADO ✓';
+                document.getElementById('st-3').classList.add('complete');
+                document.getElementById('st-4').textContent = 'PROCESANDO';
+            }, 6000);
+
+            setTimeout(() => {
+                document.getElementById('pb-4').style.width = '100%';
+                document.getElementById('pb-4').classList.add('complete');
+                document.getElementById('st-4').textContent = 'VALIDADO ✓';
+                document.getElementById('st-4').classList.add('complete');
+                document.getElementById('st-5').textContent = 'PROCESANDO';
+            }, 8000);
+
+            setTimeout(() => {
+                document.getElementById('pb-5').style.width = '100%';
+                document.getElementById('pb-5').classList.add('complete');
+                document.getElementById('st-5').textContent = 'COMPATIBLE ✓';
+                document.getElementById('st-5').classList.add('complete');
+            }, 10000);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                step = 4;
+                render();
+            }, 12000);
         }
 
         setInterval(() => {
