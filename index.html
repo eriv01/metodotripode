@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta Profissional - Protocolo TRIPE</title>
+    <title>Consulta Profesional - Protocolo TRIPE</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #ef4444; --bg: #050505; --card: #111111; --text: #ffffff; --muted: #9ca3af; --border: #262626; }
@@ -17,15 +17,15 @@
         .video-container.sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; margin: 0; border-radius: 0; max-width: 100%; }
         .video-placeholder { display: none; }
         .video-placeholder.show { display: block; padding-bottom: 56.25%; }
-        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); margin-top: 20px; }
+        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); z-index: 999; }
         .btn-next:hover { transform: scale(1.02); }
         .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
         .screen { display: none; }
         .screen.active { display: block; }
         .progress-bar { height: 4px; background: var(--border); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
-        .options-grid { display: grid; gap: 14px; margin-bottom: 25px; }
-        .option-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 18px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; font-size: 16px; }
+        .options-grid { display: grid; gap: 12px; margin-bottom: 25px; }
+        .option-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 16px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
         .option-btn:hover { border-color: var(--primary); background: rgba(239, 68, 68, 0.1); }
         .urgency-badge { background: rgba(34, 197, 94, 0.2); border: 2px solid #22c55e; padding: 10px 15px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: 900; color: #22c55e; font-size: 12px; }
         .carousel { width: 100%; height: 250px; background: #000; border-radius: 15px; margin: 15px 0; overflow: hidden; position: relative; border: 1px solid var(--border); }
@@ -40,46 +40,34 @@
         .progress-bar-fill.complete { background: #22c55e; }
         .status-tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #333; }
         .status-tag.complete { background: #22c55e; color: #000; }
-        .benefit-list { text-align: left; margin: 25px 0; }
-        .benefit-item { display: flex; align-items: flex-start; margin-bottom: 16px; font-size: 15px; font-weight: 700; color: #fff; line-height: 1.4; }
-        .benefit-item span { color: #22c55e; margin-right: 12px; font-size: 20px; flex-shrink: 0; }
+        .benefit-list { text-align: left; margin: 20px 0; }
+        .benefit-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; font-weight: 800; color: #fff; text-transform: uppercase; }
+        .benefit-item span { color: #22c55e; margin-right: 10px; font-size: 18px; }
         .guarantee-box { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin: 20px 0; border: 1px dashed #444; }
         .guarantee-badge { width: 50px; margin-right: 15px; }
         .guarantee-text { text-align: left; font-size: 12px; line-height: 1.3; }
-        .question-text { font-size: 24px; font-weight: 900; margin-bottom: 20px; line-height: 1.3; }
-        
-        /* Resultado personalizado em destaque */
-        .result-hero { background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05)); border: 3px solid #22c55e; padding: 30px 25px; border-radius: 20px; margin: 25px 0; box-shadow: 0 15px 40px rgba(34, 197, 94, 0.25); text-align: center; }
-        .result-label { font-size: 12px; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px; }
-        .result-number { font-size: 64px; font-weight: 900; color: #22c55e; line-height: 1; margin: 12px 0; text-shadow: 0 0 25px rgba(34, 197, 94, 0.6); letter-spacing: -2px; }
-        .result-subtext { font-size: 15px; color: #d1d5db; margin-top: 12px; font-weight: 600; }
-        .urgency-timer { background: rgba(239, 68, 68, 0.1); border: 2px solid #ef4444; padding: 12px 18px; border-radius: 12px; margin: 20px 0; font-size: 13px; font-weight: 900; color: #ef4444; }
-        .social-proof-live { font-size: 12px; color: #22c55e; font-weight: 700; margin: 15px 0; }
-        
-        /* Forçar vídeo Wistia a não abrir popover */
-        .wistia_embed { position: relative !important; }
-        .wistia_click_to_play { display: none !important; }
-        button[aria-label="Play Video"] { pointer-events: auto !important; }
-        .w-vulcan-v2-button { display: none !important; }
-        .w-css-reset button[aria-label*="fullscreen"] { display: none !important; }
+        .sound-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; background: rgba(239, 68, 68, 0.95); color: white; border: none; padding: 20px 40px; border-radius: 50px; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5); animation: pulse-sound 2s infinite; display: none; }
+        .sound-button.show { display: block; }
+        @keyframes pulse-sound { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.05); } }
     </style>
 </head>
 <body>
     <div class="quiz-card">
-        <!-- Tela 1: VSL -->
+        <!-- Pantalla 1: VSL -->
         <div id="s-0" class="screen active">
-            <div class="fixed-header">PROTOCOLO TRIPE - MÉTODO CIENTÍFICO</div>
-            <h1 class="headline">AUMENTE ATÉ 7CM EM 45 DIAS SEM CIRURGIA OU APARELHOS</h1>
-            <p class="sub-headline">Assista ao vídeo e descubra o método usado por milhares de homens</p>
+            <div class="fixed-header">PROTOCOLO TRIPE - REVELADO</div>
+            <h1 class="headline">EL SECRETO DE LOS ACTORES PORNO PARA ACTIVAR EL CRECIMIENTO DEL PENE EN 45 DÍAS.</h1>
+            <p class="sub-headline">Mira el video a continuación para liberar tu 👇evaluación gratuita👇</p>
             <div class="video-placeholder"></div>
             <div class="video-container" id="video-container">
-              <script src="https://fast.wistia.com/embed/medias/8qxcoc6a4p.jsonp" async></script>
+              <button id="sound-btn" class="sound-button">🔊 ACTIVAR SONIDO</button>
+              <script src="https://fast.wistia.com/embed/medias/xkpxqfn66k.jsonp" async></script>
               <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
               <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
                 <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                  <div class="wistia_embed wistia_async_8qxcoc6a4p videoFoam=true" style="height:100%;position:relative;width:100%">
+                  <div class="wistia_embed wistia_async_xkpxqfn66k videoFoam=true" style="height:100%;position:relative;width:100%">
                     <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                      <img src="https://fast.wistia.com/embed/medias/8qxcoc6a4p/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                      <img src="https://fast.wistia.com/embed/medias/xkpxqfn66k/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
                     </div>
                   </div>
                 </div>
@@ -88,11 +76,11 @@
             <button id="vsl-button" class="btn-next" onclick="next()">LIBERAR PROTOCOLO</button>
         </div>
 
-        <!-- Tela 2: Modal de Autoridade -->
+        <!-- Pantalla 2: Modal de Autoridad -->
         <div id="s-1" class="screen">
-            <div class="fixed-header">AVALIAÇÃO PERSONALIZADA GRATUITA</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">DESCUBRA QUANTO VOCÊ PODE CRESCER EM 45 DIAS</h2>
-            <div class="urgency-badge"><span id="online-count-val">147</span> HOMENS FAZENDO AVALIAÇÃO AGORA</div>
+            <div class="fixed-header">CONSULTA PROFESIONAL GRATUITA</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">HAZ CLIC AHORA PARA REALIZAR TU EVALUACIÓN GRATUITA</h2>
+            <div class="urgency-badge"><span id="online-count-val">147</span> HOMBRES EN LÍNEA AHORA</div>
             <div class="carousel" id="authority-carousel">
                 <div class="slide active">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/02-.jpg" alt="Paciente M. Souza">
@@ -103,24 +91,24 @@
                     <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm (VALIDADO ✓)</div>
                 </div>
                 <div class="slide">
-                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudo Clínico">
-                    <div class="slide-caption">ESTUDO CLÍNICO: EXPANSÃO TECIDUAL ATIVA</div>
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudio Clínico">
+                    <div class="slide-caption">ESTUDIO CLÍNICO: EXPANSIÓN TISULAR ACTIVA</div>
                 </div>
             </div>
-            <button class="btn-next" onclick="next()" id="start-quiz-btn">INICIAR AVALIAÇÃO AGORA</button>
+            <button class="btn-next" onclick="next()" id="start-quiz-btn">INICIAR EVALUACIÓN AHORA</button>
         </div>
 
-        <!-- Tela 3: Quiz (15 Perguntas) -->
+        <!-- Pantalla 3: Quiz (15 Preguntas) -->
         <div id="s-2" class="screen">
-            <div class="fixed-header">AVALIAÇÃO CLÍNICA - ETAPA <span id="q-num">1</span>/15</div>
+            <div class="fixed-header">EVALUACIÓN CLÍNICA - ETAPA <span id="q-num">1</span>/15</div>
             <div class="progress-bar"><div class="progress-fill" id="p-fill"></div></div>
             <div id="q-box"></div>
         </div>
 
-        <!-- Tela 4: Processamento -->
+        <!-- Pantalla 4: Procesamiento -->
         <div id="s-3" class="screen">
-            <div class="fixed-header">SISTEMA DE DIAGNÓSTICO AVANÇADO</div>
-            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">ANALISANDO DADOS BIOMÉTRICOS...</h2>
+            <div class="fixed-header">SISTEMA DE DIAGNÓSTICO AVANZADO</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">ANALIZANDO DATOS BIOMÉTRICOS...</h2>
             <div class="carousel" id="depo-carousel">
                 <div class="slide active">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp" alt="Paciente H. Lima">
@@ -137,94 +125,71 @@
             </div>
             <div id="analysis-box" style="margin-top: 25px;">
                 <div class="analysis-item">
-                    <div class="analysis-label"><span>CAPACIDADE DE EXPANSÃO TECIDUAL</span> <span id="st-1" class="status-tag">PROCESSANDO</span></div>
+                    <div class="analysis-label"><span>FLUJO SANGUÍNEO CAVERNOSO</span> <span id="st-1" class="status-tag">PROCESANDO</span></div>
                     <div class="progress-container"><div id="pb-1" class="progress-bar-fill"></div></div>
                 </div>
                 <div class="analysis-item">
-                    <div class="analysis-label"><span>POTENCIAL DE CRESCIMENTO NATURAL</span> <span id="st-2" class="status-tag">AGUARDANDO</span></div>
+                    <div class="analysis-label"><span>DENSIDAD TISULAR</span> <span id="st-2" class="status-tag">ESPERANDO</span></div>
                     <div class="progress-container"><div id="pb-2" class="progress-bar-fill"></div></div>
                 </div>
                 <div class="analysis-item">
-                    <div class="analysis-label"><span>ÍNDICE DE VASCULARIZAÇÃO PENIANA</span> <span id="st-3" class="status-tag">AGUARDANDO</span></div>
+                    <div class="analysis-label"><span>COMPATIBILIDAD PROTOCOLO</span> <span id="st-3" class="status-tag">ESPERANDO</span></div>
                     <div class="progress-container"><div id="pb-3" class="progress-bar-fill"></div></div>
-                </div>
-                <div class="analysis-item">
-                    <div class="analysis-label"><span>RESPOSTA HORMONAL AO PROTOCOLO</span> <span id="st-4" class="status-tag">AGUARDANDO</span></div>
-                    <div class="progress-container"><div id="pb-4" class="progress-bar-fill"></div></div>
-                </div>
-                <div class="analysis-item">
-                    <div class="analysis-label"><span>TAXA DE SUCESSO DO PROTOCOLO</span> <span id="st-5" class="status-tag">AGUARDANDO</span></div>
-                    <div class="progress-container"><div id="pb-5" class="progress-bar-fill"></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- Tela 5: Oferta Final -->
+        <!-- Pantalla 5: Oferta Final -->
         <div id="s-4" class="screen">
-            <div class="fixed-header">✓ AVALIAÇÃO CONCLUÍDA</div>
-            <h2 style="font-size: 20px; font-weight: 900; margin-bottom: 20px; color: #fff;">SEU PLANO PERSONALIZADO DE 45 DIAS ESTÁ PRONTO</h2>
+            <div class="fixed-header">ACCESO LIBERADO AL PROTOCOLO</div>
+            <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 10px;">¡TU PLAN PERSONALIZADO ESTÁ LISTO!</h2>
             
-            <div class="result-hero">
-                <div class="result-label">VOCÊ PODE GANHAR</div>
-                <div class="result-number">4-7 CM</div>
-                <div class="result-label">DE COMPRIMENTO + GROSSURA</div>
-                <p class="result-subtext">Baseado em: sua idade, histórico vascular e frequência de ereções</p>
-            </div>
-
-            <div class="urgency-timer">
-                ⚠️ <span id="access-count">47</span> HOMENS PEGARAM ACESSO NAS ÚLTIMAS 4 HORAS
-            </div>
-
             <div class="benefit-list">
-                <div class="benefit-item"><span>✓</span> Ganhe de 3 a 7cm de comprimento PERMANENTE</div>
-                <div class="benefit-item"><span>✓</span> Primeiras medições visíveis em 21 dias</div>
-                <div class="benefit-item"><span>✓</span> Ereções 3x mais duradouras a partir do dia 30</div>
-                <div class="benefit-item"><span>✓</span> Zero cirurgias, aparelhos ou medicamentos</div>
-                <div class="benefit-item"><span>✓</span> Ela vai SENTIR a diferença (e te agradecer)</div>
-                <div class="benefit-item"><span>✓</span> Garantia incondicional de 30 dias</div>
-            </div>
-
-            <div class="social-proof-live">
-                🟢 <span id="live-watching">23</span> pessoas visualizando esta oferta agora
+                <div class="benefit-item"><span>✓</span> AUMENTA EL TAMAÑO Y GROSOR NATURALMENTE</div>
+                <div class="benefit-item"><span>✓</span> ERECCIONES MÁS DURADERAS</div>
+                <div class="benefit-item"><span>✓</span> PRIMEROS RESULTADOS EN 45 DÍAS</div>
+                <div class="benefit-item"><span>✓</span> SIN APARATOS NI MEDICAMENTOS</div>
+                <div class="benefit-item"><span>✓</span> HAZ QUE ELLA LLEGUE 3 VECES POR NOCHE</div>
+                <div class="benefit-item"><span>✓</span> DURA HASTA 3 HORAS EN LA CAMA</div>
             </div>
 
             <div class="guarantee-box">
                 <img src="https://metodotripe.shop/wp-content/uploads/2026/02/7564b4c41b95c4d46ca0_-_94d8bd698ca2c759ce37_-_inserir-um-titulo.jpg" class="guarantee-badge">
                 <div class="guarantee-text">
                     <p style="font-weight: 900; color: #fff;">MÉTODO TRIPE</p>
-                    <p style="font-weight: 900; color: #22c55e;">GARANTIA TOTAL DE 30 DIAS</p>
-                    <p style="color: var(--muted);">Satisfação 100% ou seu dinheiro de volta</p>
+                    <p style="font-weight: 900; color: #22c55e;">30 DÍAS DE GARANTÍA</p>
+                    <p style="color: var(--muted);">+ BONOS EXCLUSIVOS INCLUIDOS</p>
                 </div>
             </div>
 
-            <button class="btn-next" onclick="finish()" style="margin-top: 10px;">ACESSAR MEU PLANO DE 45 DIAS AGORA</button>
-            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">🔒 Compra 100% Segura e Sigilosa • Acesso Imediato</p>
+            <button class="btn-next" onclick="finish()" style="margin-top: 10px;">GARANTIZAR MI ACCESO AHORA</button>
+            <p style="font-size: 10px; color: var(--muted); margin-top: 15px;">Compra 100% Segura y Confidencial</p>
         </div>
     </div>
 
     <script>
         // ==========================================
-        // CONFIGURAÇÃO - MUDE AQUI O LINK DO CHECKOUT
+        // CONFIGURACIÓN - CAMBIA SOLO ESTA LÍNEA
         // ==========================================
-        const CHECKOUT_URL = 'https://pay.wiapy.com/mm3kNpGy6Q';
+        const CHECKOUT_URL = 'https://pay.hotmart.com/I101039445P?checkoutMode=10';
         // ==========================================
 
         const QUESTIONS = [
-            { id: 'idade', t: 'Qual sua faixa etária? (Fator de risco vascular)', o: ['18-25', '26-35', '36-45', '46-55', '55+'] },
-            { id: 'rigidez', t: 'Com que frequência você atinge rigidez máxima do pênis?', o: ['Quase nunca', 'Raramente', 'Às vezes', 'Frequentemente', 'Sempre'] },
-            { id: 'manutencao', t: 'Consegue manter a ereção até ejacular?', o: ['Tenho muita dificuldade', 'Às vezes falha', 'Sim, sem problemas'] },
-            { id: 'matinal', t: 'Você acorda com ereção matinal?', o: ['Nunca', 'Raramente', 'Quase todos os dias'] },
-            { id: 'circulacao', t: 'Sente as extremidades (mãos/pés) frias com frequência?', o: ['Sim, constantemente', 'Às vezes', 'Não'] },
-            { id: 'historico', t: 'Você tem histórico de Diabetes ou Pressão Alta?', o: ['Sim, ambos', 'Sim, um deles', 'Não'] },
-            { id: 'tamanho', t: 'Você percebeu alguma redução no tamanho do pênis ao longo dos anos?', o: ['Sim, visível', 'Talvez um pouco', 'Não'] },
-            { id: 'estresse', t: 'Qual seu nível de estresse diário?', o: ['Muito alto', 'Alto', 'Moderado', 'Baixo'] },
-            { id: 'sono', t: 'Quantas horas de sono de qualidade você tem?', o: ['Menos de 5h', '5-6h', '7-8h', 'Mais de 8h'] },
-            { id: 'libido', t: 'Como você avalia seu desejo sexual (libido)?', o: ['Muito baixo', 'Baixo', 'Normal', 'Alto'] },
-            { id: 'vicios', t: 'Você fuma ou consome álcool em excesso?', o: ['Sim, ambos', 'Sim, um deles', 'Não'] },
-            { id: 'medicamentos', t: 'Faz uso contínuo de algum medicamento?', o: ['Sim', 'Não'] },
-            { id: 'exercicio', t: 'Qual sua frequência de exercícios físicos?', o: ['Nunca', '1-2x/semana', '3-4x/semana', 'Diariamente'] },
-            { id: 'recuperacao', t: 'Quanto tempo leva para ter uma segunda ereção?', o: ['Mais de 1 hora', '30 minutos', '10-20 minutos', 'Quase imediato'] },
-            { id: 'prioridade', t: 'Resolver este problema é sua prioridade máxima?', o: ['Sim, urgente', 'Sim, mas posso esperar', 'Apenas curiosidade'] }
+            { id: 'edad', t: '¿Cuál es tu rango de edad? (Factor de riesgo vascular)', o: ['18-25', '26-35', '36-45', '46-55', '55+'] },
+            { id: 'rigidez', t: '¿Con qué frecuencia alcanzas la rigidez máxima del pene?', o: ['Casi nunca', 'Raramente', 'A veces', 'Frecuentemente', 'Siempre'] },
+            { id: 'mantenimiento', t: '¿Puedes mantener la erección hasta eyacular?', o: ['Tengo mucha dificultad', 'A veces falla', 'Sí, sin problemas'] },
+            { id: 'matinal', t: '¿Te despiertas con erección matutina?', o: ['Nunca', 'Raramente', 'Casi todos los días'] },
+            { id: 'circulacion', t: '¿Sientes las extremidades (manos/pies) frías con frecuencia?', o: ['Sí, constantemente', 'A veces', 'No'] },
+            { id: 'historial', t: '¿Tienes historial de Diabetes o Presión Alta?', o: ['Sí, ambas', 'Sí, una de ellas', 'No'] },
+            { id: 'tamano', t: '¿Has notado alguna reducción en el tamaño del pene a lo largo de los años?', o: ['Sí, visible', 'Tal vez un poco', 'No'] },
+            { id: 'estres', t: '¿Cuál es tu nivel de estrés diario?', o: ['Muy alto', 'Alto', 'Moderado', 'Bajo'] },
+            { id: 'sueno', t: '¿Cuántas horas de sueño de calidad tienes?', o: ['Menos de 5h', '5-6h', '7-8h', 'Más de 8h'] },
+            { id: 'libido', t: '¿Cómo evalúas tu deseo sexual (libido)?', o: ['Muy bajo', 'Bajo', 'Normal', 'Alto'] },
+            { id: 'vicios', t: '¿Fumas o consumes alcohol en exceso?', o: ['Sí, ambos', 'Sí, uno de ellos', 'No'] },
+            { id: 'medicamentos', t: '¿Tomas algún medicamento de forma continua?', o: ['Sí', 'No'] },
+            { id: 'ejercicio', t: '¿Cuál es tu frecuencia de ejercicio físico?', o: ['Nunca', '1-2 veces/semana', '3-4 veces/semana', 'Diariamente'] },
+            { id: 'recuperacion', t: '¿Cuánto tiempo tardas en tener una segunda erección?', o: ['Más de 1 hora', '30 minutos', '10-20 minutos', 'Casi inmediato'] },
+            { id: 'prioridad', t: '¿Resolver este problema es tu máxima prioridad?', o: ['Sí, urgente', 'Sí, pero puedo esperar', 'Solo curiosidad'] }
         ];
 
         let step = 0;
@@ -252,7 +217,7 @@
         }
 
         function finish() {
-            console.log('🔗 Redirecionando para:', CHECKOUT_URL);
+            console.log('🔗 Redirigiendo a:', CHECKOUT_URL);
             window.location.href = CHECKOUT_URL;
         }
 
@@ -265,7 +230,7 @@
                 document.getElementById('q-num').textContent = qIdx + 1;
                 document.getElementById('p-fill').style.width = ((qIdx + 1) / 15 * 100) + '%';
                 document.getElementById('q-box').innerHTML = `
-                    <div class="question-text">${q.t}</div>
+                    <div style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">${q.t}</div>
                     <div class="options-grid">
                         ${q.o.map((o, i) => `<button class="option-btn" onclick="sel('${q.id}', ${i})">${o}</button>`).join('')}
                     </div>
@@ -297,45 +262,29 @@
                 document.getElementById('pb-1').classList.add('complete');
                 document.getElementById('st-1').textContent = 'VALIDADO ✓';
                 document.getElementById('st-1').classList.add('complete');
-                document.getElementById('st-2').textContent = 'PROCESSANDO';
-            }, 2000);
+                document.getElementById('st-2').textContent = 'PROCESANDO';
+            }, 2500);
 
             setTimeout(function() {
                 document.getElementById('pb-2').style.width = '100%';
                 document.getElementById('pb-2').classList.add('complete');
                 document.getElementById('st-2').textContent = 'VALIDADO ✓';
                 document.getElementById('st-2').classList.add('complete');
-                document.getElementById('st-3').textContent = 'PROCESSANDO';
-            }, 4000);
+                document.getElementById('st-3').textContent = 'PROCESANDO';
+            }, 5000);
 
             setTimeout(function() {
                 document.getElementById('pb-3').style.width = '100%';
                 document.getElementById('pb-3').classList.add('complete');
-                document.getElementById('st-3').textContent = 'VALIDADO ✓';
+                document.getElementById('st-3').textContent = 'COMPATIBLE ✓';
                 document.getElementById('st-3').classList.add('complete');
-                document.getElementById('st-4').textContent = 'PROCESSANDO';
-            }, 6000);
-
-            setTimeout(function() {
-                document.getElementById('pb-4').style.width = '100%';
-                document.getElementById('pb-4').classList.add('complete');
-                document.getElementById('st-4').textContent = 'VALIDADO ✓';
-                document.getElementById('st-4').classList.add('complete');
-                document.getElementById('st-5').textContent = 'PROCESSANDO';
-            }, 8000);
-
-            setTimeout(function() {
-                document.getElementById('pb-5').style.width = '100%';
-                document.getElementById('pb-5').classList.add('complete');
-                document.getElementById('st-5').textContent = 'COMPATÍVEL ✓';
-                document.getElementById('st-5').classList.add('complete');
-            }, 10000);
+            }, 7500);
 
             setTimeout(function() {
                 clearInterval(interval);
                 step = 4;
                 render();
-            }, 12000);
+            }, 9000);
         }
 
         setInterval(function() {
@@ -344,22 +293,6 @@
                 const current = parseInt(el.textContent);
                 const change = Math.floor(Math.random() * 6) - 2;
                 el.textContent = Math.max(135, Math.min(172, current + change));
-            }
-            
-            // Contador de acessos recentes
-            const accessEl = document.getElementById('access-count');
-            if (accessEl) {
-                const current = parseInt(accessEl.textContent);
-                if (Math.random() > 0.7) {
-                    accessEl.textContent = Math.max(42, Math.min(56, current + (Math.random() > 0.5 ? 1 : -1)));
-                }
-            }
-            
-            // Pessoas visualizando agora
-            const liveEl = document.getElementById('live-watching');
-            if (liveEl) {
-                const current = parseInt(liveEl.textContent);
-                liveEl.textContent = Math.max(18, Math.min(31, current + Math.floor(Math.random() * 3) - 1));
             }
         }, 3500);
 
@@ -381,16 +314,36 @@
             }
         });
 
-        console.log('🇧🇷 Quiz iniciado - Português');
+        console.log('🇪🇸 Quiz iniciado - Español');
         console.log('🎯 Checkout:', CHECKOUT_URL);
         render();
 
-        // Desabilitar popover do Wistia
+        // Autoplay mutado + botão para ativar som
         window._wq = window._wq || [];
-        _wq.push({ id: "8qxcoc6a4p", onReady: function(video) {
-            video.popover(false); // Desabilita popover
-            video.suppressPopover = true;
-            console.log('📹 Vídeo configurado - Popover desabilitado');
+        _wq.push({ id: "xkpxqfn66k", onReady: function(video) {
+            let soundActivated = false;
+            
+            // Inicia mutado para permitir autoplay
+            video.mute();
+            video.play();
+            
+            // Mostra botão de som após 2 segundos
+            setTimeout(function() {
+                document.getElementById('sound-btn').classList.add('show');
+            }, 2000);
+            
+            // Quando clicar no botão
+            document.getElementById('sound-btn').onclick = function() {
+                if (!soundActivated) {
+                    video.unmute();
+                    video.volume(1);
+                    soundActivated = true;
+                    this.style.display = 'none';
+                    console.log('🔊 Som ativado!');
+                }
+            };
+            
+            console.log('🎬 Autoplay iniciado (mutado) - Clique no botão para ativar som');
         }});
     </script>
 </body>
